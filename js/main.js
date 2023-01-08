@@ -369,3 +369,94 @@ btn.addEventListener('click', () => {
 closeBtb.addEventListener('click', () => {
     toggleTrailer();
 });
+
+// valiadtion 
+let userName=document.getElementById('label__name');
+let phone=document.getElementById('label__phone');
+let email=document.getElementById('label__email');
+let companyname=document.getElementById('label__company');
+let message=document.getElementById('label__message'); 
+
+function sendMess(e) { 
+    if (userInputValidation()== true){
+        console.log('احلي مسا ');
+    }
+    console.log('shazlu');
+}
+
+
+function userInputValidation()
+{
+    usernameValidation();
+    // passwordValidation();
+    // emailValidation();
+    if((usernameValidation()==true)  ){
+        return true
+    }
+    else{
+        return false
+    }
+}
+
+function usernameValidation(){ 
+     var regexName=/^[A-Za-z]{3,10}(\s?[A-Za-z]{3,10})?$/
+     if (regexName.test(userName.value)==true && userName.value!="") 
+     {
+        console.log('true');
+        // userName.classList.add("is-valid")
+        // userName.classList.remove("is-invalid")
+        // usernameAlert.classList.replace( "d-block","d-none")
+        return true;
+     }
+     else
+     {
+        console.log('false');
+        // userName.classList.add("is-invalid")
+        // userName.classList.remove("is-valid")
+        // usernameAlert.classList.replace("d-none", "d-block")
+        return false
+     }
+}
+// . --->any char
+// * --->any num
+// ^ --->start
+// $ --->end 
+// function passwordValidation()
+// {
+//     var userPasswordAlert=document.getElementById("userPasswordAlert");
+//     var regexPassword=/^.{5,15}$/
+//     if (regexPassword.test(userPassword.value)==true && userPassword.value!="" ) 
+//     {
+//         userPassword.classList.add("is-valid")
+//         userPassword.classList.remove("is-invalid")
+//         userPasswordAlert.classList.replace( "d-block","d-none")
+//         return true;
+//     }
+//     else
+//     {
+//         userPassword.classList.add("is-invalid")
+//         userPassword.classList.remove("is-valid")
+//         userPasswordAlert.classList.replace("d-none", "d-block")
+//         return false
+//     }
+// }
+
+// function emailValidation()
+// {
+//     var userEmailAlert=document.getElementById("userEmailAlert");
+//     var regexEmail=/@[a-z]{5,10}(\.com)$/;
+//     if (regexEmail.test(userEmail.value)==true && userEmail.value!="" ) 
+//     {
+//         userEmail.classList.add("is-valid")
+//         userEmail.classList.remove("is-invalid")
+//         userEmailAlert.classList.replace( "d-block","d-none")
+//         return true;
+//     }
+//     else
+//     {
+//         userEmail.classList.add("is-invalid")
+//         userEmail.classList.remove("is-valid")
+//         userEmailAlert.classList.replace("d-none", "d-block")
+//         return false
+//     }
+// }
