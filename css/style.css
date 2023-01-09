@@ -755,7 +755,7 @@ img {
 .contact .container {
     box-shadow: 0 0 5px #ddd;
     background-color: #FFFFFF;
-    width: 70%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
