@@ -116,6 +116,7 @@ sel.addEventListener('click', () => {
         $('a[href = "#get"]').text('Get Our App');
         /**last update add #contact En nav  */
         $('a[href = "#contact"]').text('Contact Us');
+        $('a[href = "#blog"]').text('  Blog');
 
         $('.custome .language button').text('العربيـة');
         // ...............................
@@ -212,15 +213,19 @@ sel.addEventListener('click', () => {
         $('.phone .second').removeClass('me-2');
         $('.phone .second').addClass('ms-2');
 
-        // Contact En update 5/1
+        // Contact En
         $('#contact').attr('dir', 'ltr');
-        $('.main__title-h2').text('Contact Us'); 
+        $('.main__title-h2').text('Contact Us');
         $('.label__name').text('Name');
         $('.label__phone').text(' Phone');
-        $('.label__email').text('  Email'); 
-        $('.label__company').text('Company Name'); 
+        $('.label__email').text('  Email');
+        $('.label__company').text('Company Name');
         $('.label__message').text('Message');
         $('.btn__message').text('Send Message');
+
+        // Blog En 
+        $('#rowData').attr('dir', 'ltr');
+        displayBlogEn()
     }
     else {
         $('body').css('fontFamily', 'Tajawal')
@@ -239,8 +244,9 @@ sel.addEventListener('click', () => {
         $('a[href = "#about"]').text('تعرف علينا');
         $('a[href = "#get"]').text('الحصول على التطبيق');
 
-        /**last update add #contact En nav  */
+        /**last update add #contact and blog En nav  */
         $('a[href = "#contact"]').text('تواصل معنا');
+        $('a[href = "#blog"]').text('  مقالات');
 
 
         $('.custome .language button').text('English');
@@ -344,6 +350,11 @@ sel.addEventListener('click', () => {
         $('.label__company').text('اسم الشركه');
         $('.label__message').text('اترك رساله');
         $('.btn__message').text('  إرسل رساله');
+
+        // Blog Ar 
+        $('#rowData').attr('dir', 'rtl');
+        displayBlogAr()
+
     }
 })
 
@@ -369,3 +380,69 @@ closeBtb.addEventListener('click', () => {
     toggleTrailer();
 });
 
+(async function () {
+    let response = await fetch("https://zariontime.com/api/web/home")
+    let responseData = await response.json();
+    Blogs = responseData.Blogs;
+    displayBlogEn();
+    console.log(Blogs);
+})();
+
+function displayBlogEn() {
+    var cartona = ``;
+
+    for (var i = 0; i < Blogs.length; i++) {
+        cartona += `
+        <div class="app__blog col-md-4 mb-3 p-2 position-relative ">
+            <div class="w-100 bg-blog rounded-3 overflow-hidden  p-3 ">
+            <a href="blogsDetailes.html">
+            <img class="blog-img w-100" src="${Blogs[i].BlogImage}">
+            </a>
+                <h3 class='mt-3 app__blog-h3'>${Blogs[i].BlogTitleEn}</h3>
+                <div class="app__Blog-footer">
+                    <div class="app__Blog-footer-right ">
+                        <i class="fa fa-user"></i>
+                        <span class='mt-3 blogAuthor' >${Blogs[i].BlogAuthorEn}</span>
+                    </div>
+                    <div class="app__Blog-footer-left">
+                        <span>${Blogs[i].BlogDate}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    `
+    }
+    document.getElementById("rowData").innerHTML = cartona;
+}
+
+
+function displayBlogAr() {
+    var cartona = ``;
+
+    for (var i = 0; i < Blogs.length; i++) {
+        cartona += `
+        <div class="app__blog col-md-4 mb-3 p-2 position-relative ">
+            <div class="w-100 bg-blog rounded-3 overflow-hidden  p-3 ">
+            <a href="blogsDetailes.html">
+            <img class="blog-img w-100" src="${Blogs[i].BlogImage}">
+            </a>
+                <h3 class='mt-3 app__blog-h3'>${Blogs[i].BlogTitleAr}</h3>
+                <div class="app__Blog-footer">
+                    <div class="app__Blog-footer-right ">
+                        <i class="fa fa-user"></i>
+                        <span class='mt-3 blogAuthor' >${Blogs[i].BlogAuthorAr}</span>
+                    </div>
+                    <div class="app__Blog-footer-left">
+                        <span>${Blogs[i].BlogDate}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    `
+    }
+    document.getElementById("rowData").innerHTML = cartona;
+}
+
+ 
