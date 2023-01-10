@@ -215,9 +215,9 @@ sel.addEventListener('click', () => {
         $('.navigate .contact3').text('Egypt Branches');
         $('.navigate div span').removeClass('ms-3');
         $('.navigate div span').addClass('me-3');
-        $('.navigate div .ksa').text('7865 King Abdullah Bin - Abdulaziz Road - Jasham - AL-Madina - KSA.');
-        $('.navigate div .ksa2').text('Anas Abn Malek Street - Osman Abn Afan - El-Ryad - KSA');
-        $('.navigate div .egy').text('9 Street Saeed Zakaria - Nasr City - Cairo - Egypt.');
+        $('.navigate div .ksa').text('Riyadh Office: 8491 Othman Bin Affaan Road Al Narjas - Riyadh - KSA.');
+        $('.navigate div .ksa2').text('AL-Madina Office: 7865 King Abdullah Bin - Abdulaziz Road - Jasham - AL-Madina - KSA.');
+        $('.navigate div .egy').text('9 Street Saeed Zakaria - Nasr City - Cairo - Egypt');
         $('.phone a').attr('dir', 'ltr');
         $('.phone .first').removeClass('ms-2');
         $('.phone .first').addClass('me-2');
@@ -351,8 +351,8 @@ sel.addEventListener('click', () => {
         $('.navigate .contact3').text('فروع مصر');
         $('.navigate div span').removeClass('me-3');
         $('.navigate div span').addClass('ms-3');
-        $('.navigate div .ksa').text('7865 الملك عبدالله بن عبدالعزيز - جاسم - المدينة المنورة - المملكة العربية السعودية.');
-        $('.navigate div .ksa2').text('طريق انس بن مالك تقاطع طريق عثمان بن عفان - الرياض  - المملكة العربية السعودية.');
+        $('.navigate div .ksa').text('مكتب الرياض: 8491 طريق انس بن مالك تقاطع طريق عثمان بن عفان النرجس - الرياض - المملكة العربية السعودية.');
+        $('.navigate div .ksa2').text('   مكتب المدينة المنورة: 7865 الملك عبدالله بن عبدالعزيز - جاسم - المدينة المنورة - المملكة العربية السعودية.   ');
         $('.navigate div .egy').text('9 شارع سعيد زكريا - مدينة نصر - القاهرة - جمهورية مصر العربية.');
         $('.phone a').attr('dir', 'ltr');
         $('.phone .first').removeClass('me-2');
