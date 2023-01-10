@@ -866,3 +866,15 @@ img {
 .blog .bg-light{
     background:white !important
 }
+@media screen and (max-width:1200px) {
+    
+    .blog .bg-light {
+        width:80% !important;
+}
+}
+@media screen and (max-width:767px) {
+    
+    .blog .bg-light {
+        width:100% !important;
+}
+}

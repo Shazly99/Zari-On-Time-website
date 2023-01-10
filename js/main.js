@@ -119,6 +119,7 @@ sel.addEventListener('click', () => {
         /**last update add #contact En nav  */
         $('a[href = "#contact"]').text('Contact Us');
         $('a[href = "#blog"]').text('  Blog');
+
         // blogsDetailes page handel ar & en 
         $('a[href = "index.html#home"]').text('Home');
         $('a[href = "index.html#features"]').text('Features');
@@ -254,7 +255,9 @@ sel.addEventListener('click', () => {
         $('a[href = "#screenshots"]').text('اللقطات');
         $('a[href = "#about"]').text('تعرف علينا');
         $('a[href = "#get"]').text('الحصول على التطبيق');
-        
+        $('a[href = "#contact"]').text('تواصل معنا');
+        $('a[href = "#blog"]').text('  مقالات');
+
         /**last update add #contact and blog En nav  */
         $('a[href = "index.html#home"]').text('الرئيسية');
         $('a[href = "index.html#features"]').text('المميزات');
