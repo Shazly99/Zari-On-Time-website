@@ -858,3 +858,11 @@ img {
 /* box-shadow: 0 0 0 0.25rem   rgba(180, 11, 11, 0.745) !important; */
 /* border-color:red; */
 /* } */
+
+/* Blogs */
+.blog__bg-gradient{
+    background-color: rgb(223, 222, 222);
+}
+.blog .bg-light{
+    background:white !important
+}

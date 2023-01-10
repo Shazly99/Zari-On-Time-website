@@ -1,4 +1,5 @@
 
+
 // loading to init...........
 
 $(document).ready(function () {
@@ -109,14 +110,22 @@ sel.addEventListener('click', () => {
         $('.collapse .navbar-nav').removeClass('ms-auto');
         $('.custome').removeClass('me-auto');
 
-        $('a[href = "#home"]').text('Home');
+        $('a[href = "#home"]').text('Home'); 
         $('a[href = "#features"]').text('Features');
         $('a[href = "#screenshots"]').text('Screenshots');
         $('a[href = "#about"]').text('About Us');
         $('a[href = "#get"]').text('Get Our App');
+
         /**last update add #contact En nav  */
         $('a[href = "#contact"]').text('Contact Us');
         $('a[href = "#blog"]').text('  Blog');
+
+        $('a[href = "index.html#home"]').text('Home');
+        $('a[href = "index.html#features"]').text('Features');
+        $('a[href = "index.html#screenshots"]').text('Screenshots');
+        $('a[href = "index.html#about"]').text('About Us');
+        $('a[href = "index.html#get"]').text('Get Our App');
+
 
         $('.custome .language button').text('العربيـة');
         // ...............................
@@ -225,7 +234,8 @@ sel.addEventListener('click', () => {
 
         // Blog En 
         $('#rowData').attr('dir', 'ltr');
-        displayBlogEn()
+        $('.blog__title-h2').text('Blogging');
+        displayBlogEn();
     }
     else {
         $('body').css('fontFamily', 'Tajawal')
@@ -243,10 +253,15 @@ sel.addEventListener('click', () => {
         $('a[href = "#screenshots"]').text('اللقطات');
         $('a[href = "#about"]').text('تعرف علينا');
         $('a[href = "#get"]').text('الحصول على التطبيق');
-
+        
         /**last update add #contact and blog En nav  */
-        $('a[href = "#contact"]').text('تواصل معنا');
-        $('a[href = "#blog"]').text('  مقالات');
+        $('a[href = "index.html#home"]').text('الرئيسية');
+        $('a[href = "index.html#features"]').text('المميزات');
+        $('a[href = "index.html#screenshots"]').text('اللقطات');
+        $('a[href = "index.html#about"]').text('تعرف علينا');
+        $('a[href = "index.html#get"]').text('الحصول على التطبيق');
+        $('a[href = "index.html#contact"]').text('تواصل معنا');
+        $('a[href = "index.html#blog"]').text('  مقالات');
 
 
         $('.custome .language button').text('English');
@@ -353,6 +368,7 @@ sel.addEventListener('click', () => {
 
         // Blog Ar 
         $('#rowData').attr('dir', 'rtl');
+        $('.blog__title-h2').text('مقالات');
         displayBlogAr()
 
     }
@@ -380,6 +396,36 @@ closeBtb.addEventListener('click', () => {
     toggleTrailer();
 });
 
+
+
+/** contact us send message */ 
+let userName = document.getElementById('label__name');
+let phone = document.getElementById('label__phone');
+let email = document.getElementById('label__email');
+let companyname = document.getElementById('label__company');
+let message = document.getElementById('label__message');
+
+async function sendMessage() {
+    let data = {
+        UserName: userName.value,
+        Phone: phone.value,
+        Email: email.value,
+        Company: companyname.value,
+        Message: message.value,
+    }
+    console.log(data); 
+    let response = await fetch("https://zariontime.com/api/web/contactus",{
+        method: "POST", 
+        body: data
+      } ).then(res => {
+        alert(res.status)  
+      }); 
+}
+
+
+
+// blog get data
+
 (async function () {
     let response = await fetch("https://zariontime.com/api/web/home")
     let responseData = await response.json();
@@ -390,15 +436,14 @@ closeBtb.addEventListener('click', () => {
 
 function displayBlogEn() {
     var cartona = ``;
-
     for (var i = 0; i < Blogs.length; i++) {
         cartona += `
         <div class="app__blog col-md-4 mb-3 p-2 position-relative ">
-            <div class="w-100 bg-blog rounded-3 overflow-hidden  p-3 ">
-            <a href="blogsDetailes.html">
-            <img class="blog-img w-100" src="${Blogs[i].BlogImage}">
+            <div   class="w-100 bg-blog rounded-3 overflow-hidden  p-3 ">
+            <a target="_blank" href="blogsDetailes.html?id=${Blogs[i].IDBlog}">
+                 <img class="blog-img w-100" src="${Blogs[i].BlogImage}">
             </a>
-                <h3 class='mt-3 app__blog-h3'>${Blogs[i].BlogTitleEn}</h3>
+                 <h3 class='mt-3 app__blog-h3'>${Blogs[i].BlogTitleEn}</h3>
                 <div class="app__Blog-footer">
                     <div class="app__Blog-footer-right ">
                         <i class="fa fa-user"></i>
@@ -408,7 +453,6 @@ function displayBlogEn() {
                         <span>${Blogs[i].BlogDate}</span>
                     </div>
                 </div>
-
             </div>
         </div>
     `
@@ -424,8 +468,8 @@ function displayBlogAr() {
         cartona += `
         <div class="app__blog col-md-4 mb-3 p-2 position-relative ">
             <div class="w-100 bg-blog rounded-3 overflow-hidden  p-3 ">
-            <a href="blogsDetailes.html">
-            <img class="blog-img w-100" src="${Blogs[i].BlogImage}">
+            <a href="blogsDetailes.html?id=${Blogs[i].IDBlog}" target="_blank">
+                 <img class="blog-img w-100" src="${Blogs[i].BlogImage}">
             </a>
                 <h3 class='mt-3 app__blog-h3'>${Blogs[i].BlogTitleAr}</h3>
                 <div class="app__Blog-footer">
@@ -437,12 +481,9 @@ function displayBlogAr() {
                         <span>${Blogs[i].BlogDate}</span>
                     </div>
                 </div>
-
             </div>
         </div>
     `
     }
     document.getElementById("rowData").innerHTML = cartona;
 }
-
- 
