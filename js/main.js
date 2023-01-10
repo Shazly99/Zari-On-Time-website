@@ -119,13 +119,14 @@ sel.addEventListener('click', () => {
         /**last update add #contact En nav  */
         $('a[href = "#contact"]').text('Contact Us');
         $('a[href = "#blog"]').text('  Blog');
-
+        // blogsDetailes page handel ar & en 
         $('a[href = "index.html#home"]').text('Home');
         $('a[href = "index.html#features"]').text('Features');
         $('a[href = "index.html#screenshots"]').text('Screenshots');
         $('a[href = "index.html#about"]').text('About Us');
         $('a[href = "index.html#get"]').text('Get Our App');
-
+        $('a[href = "index.html#contact"]').text('Contact Us');
+        $('a[href = "index.html#blog"]').text('  Blog');
 
         $('.custome .language button').text('العربيـة');
         // ...............................
@@ -406,26 +407,75 @@ let companyname = document.getElementById('label__company');
 let message = document.getElementById('label__message');
 
 async function sendMessage() {
-    let data = {
-        UserName: userName.value,
-        Phone: phone.value,
-        Email: email.value,
-        Company: companyname.value,
-        Message: message.value,
+    console.log('test');
+    if (usernameValidation()==true && compVali()==true&& phoneVali()==true&& emailVali()==true) {
+        let data = {
+            UserName: userName.value,
+            Phone: phone.value,
+            Email: email.value,
+            Company: companyname.value,
+            Message: message.value,
+        } 
+        
+        let response = await fetch("https://zariontime.com/api/web/contactus",{
+            method: "POST", 
+            body: data
+            } ).then(res => {
+                console.log(res);
+            if (res.status==200) {
+                alert('The message has been sent successfully!')  
+            }else{
+                alert('Oops samting wrang!')  
+            }
+            });
+            console.log(response);  
+    }else{
+        alert('اطرع بره')
     }
-    console.log(data); 
-    let response = await fetch("https://zariontime.com/api/web/contactus",{
-        method: "POST", 
-        body: data
-      } ).then(res => {
-        alert(res.status)  
-      }); 
+ 
 }
-
-
+function usernameValidation(){ 
+    if ( userName.value!="") 
+    {
+       return true;
+    }
+    else
+    { 
+       return false
+    }
+}  
+function phoneVali(){ 
+    if ( phone.value!="") 
+    {
+       return true;
+    }
+    else
+    { 
+       return false
+    }
+} 
+function emailVali(){ 
+    if ( email.value!="") 
+    {
+       return true;
+    }
+    else
+    { 
+       return false
+    }
+} 
+function compVali(){ 
+    if ( companyname.value!="") 
+    {
+       return true;
+    }
+    else
+    { 
+       return false
+    }
+} 
 
 // blog get data
-
 (async function () {
     let response = await fetch("https://zariontime.com/api/web/home")
     let responseData = await response.json();
@@ -459,7 +509,6 @@ function displayBlogEn() {
     }
     document.getElementById("rowData").innerHTML = cartona;
 }
-
 
 function displayBlogAr() {
     var cartona = ``;
