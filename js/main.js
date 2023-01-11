@@ -485,7 +485,7 @@ function compVali(){
     Blogs = responseData.Blogs;
     displayBlogEn();
     console.log(Blogs);
-    if (Blogs==null) {
+    if (Blogs.length === 0) {
         console.log('فاضي');
         document.getElementById("blog").classList.add("d-none");
         document.getElementById("navBlog").classList.add("d-none");
