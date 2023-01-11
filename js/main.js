@@ -488,10 +488,12 @@ function compVali(){
     if (Blogs==null) {
         console.log('فاضي');
         document.getElementById("blog").classList.add("d-none");
+        document.getElementById("navBlog").classList.add("d-none");
     }else{
         
         console.log('مليان');
         document.getElementById("blog").classList.add("d-block");
+        document.getElementById("navBlog").classList.add("d-block");
     }
 })();
 
