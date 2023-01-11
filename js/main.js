@@ -433,7 +433,7 @@ async function sendMessage() {
             });
             console.log(response);  
     }else{
-        alert('اطرع بره')
+        alert('Please enter all data')
     }
  
 }
