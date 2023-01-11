@@ -485,6 +485,14 @@ function compVali(){
     Blogs = responseData.Blogs;
     displayBlogEn();
     console.log(Blogs);
+    if (Blogs==null) {
+        console.log('فاضي');
+        document.getElementById("blog").classList.add("d-none");
+    }else{
+        
+        console.log('مليان');
+        document.getElementById("blog").classList.add("d-block");
+    }
 })();
 
 function displayBlogEn() {
