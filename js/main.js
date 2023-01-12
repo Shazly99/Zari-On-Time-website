@@ -110,7 +110,7 @@ sel.addEventListener('click', () => {
         $('.collapse .navbar-nav').removeClass('ms-auto');
         $('.custome').removeClass('me-auto');
 
-        $('a[href = "#home"]').text('Home'); 
+        $('a[href = "#home"]').text('Home');
         $('a[href = "#features"]').text('Features');
         $('a[href = "#screenshots"]').text('Screenshots');
         $('a[href = "#about"]').text('About Us');
@@ -402,7 +402,7 @@ closeBtb.addEventListener('click', () => {
 
 
 
-/** contact us send message */ 
+/** contact us send message */
 let userName = document.getElementById('label__name');
 let phone = document.getElementById('label__phone');
 let email = document.getElementById('label__email');
@@ -410,73 +410,56 @@ let companyname = document.getElementById('label__company');
 let message = document.getElementById('label__message');
 
 async function sendMessage() {
-    console.log('test');
-    if (usernameValidation()==true && compVali()==true&& phoneVali()==true&& emailVali()==true) {
-        let data = {
-            UserName: userName.value,
-            Phone: phone.value,
-            Email: email.value,
-            Company: companyname.value,
-            Message: message.value,
-        } 
-        
-        let response = await fetch("https://zariontime.com/api/web/contactus",{
-            method: "POST", 
-            body: data
-            } ).then(res => {
-                console.log(res);
-            if (res.status==200) {
-                alert('The message has been sent successfully!')  
-            }else{
-                alert('Oops samting wrang!')  
-            }
-            });
-            console.log(response);  
-    }else{
-        alert('Please enter all data')
-    }
- 
+     $.ajax({
+        url: "https://zarimain.online/messages/public/api/message",
+        method: 'post',
+        data: {
+            MessageName: userName.value,
+            MessageEmail: email.value,
+            MessagePhone: phone.value,
+            MessageSubject: companyname.value,
+            MessageText: message.value,
+            MessageSource: "ONTIME",
+        },
+        success: function (result) {
+            alert(result.MessageAr);
+        }
+    });
+
+
 }
-function usernameValidation(){ 
-    if ( userName.value!="") 
-    {
-       return true;
+function usernameValidation() {
+    if (userName.value != "") {
+        return true;
     }
-    else
-    { 
-       return false
+    else {
+        return false
     }
-}  
-function phoneVali(){ 
-    if ( phone.value!="") 
-    {
-       return true;
+}
+function phoneVali() {
+    if (phone.value != "") {
+        return true;
     }
-    else
-    { 
-       return false
+    else {
+        return false
     }
-} 
-function emailVali(){ 
-    if ( email.value!="") 
-    {
-       return true;
+}
+function emailVali() {
+    if (email.value != "") {
+        return true;
     }
-    else
-    { 
-       return false
+    else {
+        return false
     }
-} 
-function compVali(){ 
-    if ( companyname.value!="") 
-    {
-       return true;
+}
+function compVali() {
+    if (companyname.value != "") {
+        return true;
     }
-    else
-    { 
-       return false
+    else {
+        return false
     }
-} 
+}
 
 // blog get data
 (async function () {
@@ -489,8 +472,8 @@ function compVali(){
         console.log('فاضي');
         document.getElementById("blog").classList.add("d-none");
         document.getElementById("navBlog").classList.add("d-none");
-    }else{
-        
+    } else {
+
         console.log('مليان');
         document.getElementById("blog").classList.add("d-block");
         document.getElementById("navBlog").classList.add("d-block");
