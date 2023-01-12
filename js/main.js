@@ -419,9 +419,11 @@ async function sendMessage() {
             MessagePhone: phone.value,
             MessageSubject: companyname.value,
             MessageText: message.value,
-            MessageSource: "ONTIME",
+            MessageSource: "ONTIME", 
+            
         },
         success: function (result) {
+            console.log(result);
             alert(result.MessageAr);
         }
     });
